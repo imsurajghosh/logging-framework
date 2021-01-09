@@ -56,7 +56,7 @@ public class ConcurrentLogWriter {
           }
           LogMessage remove = remove();
           remove.writeToStream();
-          waitingForOthersToPush.putIfAbsent(remove.threadId, Boolean.FALSE);
+          waitingForOthersToPush.put(remove.threadId, Boolean.TRUE);
         } catch (InterruptedException e) {
           e.printStackTrace();
         } finally {
